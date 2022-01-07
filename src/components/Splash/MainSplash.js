@@ -5,7 +5,7 @@ import classes from "./MainSplash.module.css";
 function MainSplash() {
   return (
     <div className={classes.splash}>
-      <h1>MovieSwag is where conversions happen</h1>
+      <h1>MovieSwag is where movies happen</h1>
       <p>
         Customers like you get up to 40% off the actual price for VIDEO APP
         subscription. There is ove 50 000 movies waiting for you.

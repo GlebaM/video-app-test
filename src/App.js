@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
-// import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
+import AuthContext from "./store/auth-context";
+import { getPrimaryToken } from "./lib/api";
 
 import Layout from "./components/layout/Layout";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import SplashPage from "./pages/SplashPage";
-import { getPrimaryToken } from "./lib/api";
 
 function App() {
-  const [primaryToken, setPrimaryToken] = useState(null);
-  useEffect(() => {
-    // const aFun = async () => {
-    const tokenData = getPrimaryToken();
-    localStorage.setItem("primaryToken", tokenData);
-    setPrimaryToken(tokenData);
-    // };
-    // aFun();
-  }, [setPrimaryToken]);
+  const ctx = useContext(AuthContext);
 
-  console.log(primaryToken);
+  useEffect(() => {
+    const fetchData = async () => {
+      const tokenData = await getPrimaryToken();
+      localStorage.setItem("token", tokenData);
+    };
+    fetchData();
+    const loginToken = localStorage.getItem("loginToken");
+    ctx.login(loginToken);
+  }, [ctx]);
   return (
     <Layout>
       <Switch>
@@ -41,3 +41,36 @@ function App() {
 }
 
 export default App;
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const tokenData = await getPrimaryToken();
+//     localStorage.setItem("token", tokenData);
+//     setPrimaryToken(tokenData);
+//   };
+//   fetchData();
+// }, []);
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const { entities } = await getMediaList(3);
+//     setList(entities);
+//   };
+//   fetchData();
+// }, []);
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const item = await getMediaPlayInfo();
+//     setPlayer(item);
+//   };
+//   fetchData();
+// }, []);
+// useEffect(() => {
+//   const data = { email: "test@bsgroup.eu", password: "Test12!@" };
+//   const fetchData = async () => {
+//     const lg = await getLoginToken(data);
+//     setLogged(lg);
+//   };
+//   fetchData();
+// }, []);

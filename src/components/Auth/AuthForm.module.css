@@ -58,24 +58,6 @@
   align-items: center;
 }
 
-/* .actions button {
-  cursor: pointer;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: white;
-  background-color: var(--color-primary-1);
-  border: 0.2rem solid var(--color-primary-1);
-  border-radius: 0.5rem;
-  padding: 0.5rem 2.5rem;
-  transition: all 0.1s ease;
-}
-
-.actions button:hover {
-  background-color: var(--color-primary-2);
-  border-color: var(--color-primary-2);
-} */
-
 .actions .toggle {
   position: relative;
   margin-top: 1rem;

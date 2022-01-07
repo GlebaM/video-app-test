@@ -1,18 +1,18 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
+import { useHistory } from "react-router-dom";
 // import LoadingSpinner from "../../components/UI/LoadingSpinner";
 import ButtonMain from "../UI/ButtonMain";
-// import useHttp from "../hooks/useHttp";
 import classes from "./AuthForm.module.css";
-
-// const changedPassword = false;
+import { getLoginToken } from "../../lib/api";
+import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [emailValidity, setEmailValidity] = useState(true);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
-  // const { sendRequest, isLoading } = useHttp(changedPassword);
+  const ctx = useContext(AuthContext);
+  const history = useHistory();
 
   const switchAuthModeHandler = (event) => {
     event.preventDefault();
@@ -22,28 +22,30 @@ const AuthForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const enteredEmail = emailInputRef.current.value.trim().toLowerCase();
+    const enteredEmail = emailInputRef.current.value.trim();
     const enteredPassword = passwordInputRef.current.value.trim();
 
     //Add validation
-    const emailIsValid = enteredEmail.slice(-4) === ".com";
+    const emailIsValid = enteredEmail;
     const passwordIsValid = enteredPassword.length >= 7;
     if (!emailIsValid) {
       setEmailValidity(false);
       setTimeout(() => {
         setEmailValidity(true);
-      }, 4000);
+      }, 1000);
     }
 
     if (!emailIsValid || !passwordIsValid) {
       return;
     }
 
-    // sendRequest({
-    //   isLogin,
-    //   email: enteredEmail,
-    //   password: enteredPassword,
-    // });
+    const data = { email: enteredEmail, password: enteredPassword };
+    const fetchData = async () => {
+      const lg = await getLoginToken(data);
+      ctx.login(lg);
+    };
+    fetchData();
+    history.replace("/home");
 
     emailInputRef.current.value = "";
     passwordInputRef.current.value = "";
@@ -70,7 +72,10 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.actions}>
-          <ButtonMain>{isLogin ? "Login" : "Create Account"}</ButtonMain>)
+          <ButtonMain type="submit">
+            {isLogin ? "Login" : "Create Account"}
+          </ButtonMain>
+          )
           <button
             type="button"
             className={classes.toggle}

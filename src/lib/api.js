@@ -8,8 +8,8 @@ const defaultOptions = {
 let api = axios.create(defaultOptions);
 
 api.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("primaryToken");
-  const loginToken = localStorage.getItem("primaryToken");
+  const token = localStorage.getItem("token");
+  const loginToken = localStorage.getItem("loginToken");
   config.headers.Authorization = loginToken
     ? `Bearer ${loginToken}`
     : token
@@ -26,11 +26,15 @@ export async function getPrimaryToken() {
         Name: "12345678-1234-1234-1234-123412345678",
       },
     })
+    .then(({ data }) => {
+      return data;
+    })
     .catch((err) => {
       console.error(err.message);
     });
 
-  return response.data.AuthorizationToken.Token;
+  const data = await response.AuthorizationToken.Token;
+  return data;
 }
 
 export async function getMediaList(listId) {
@@ -43,11 +47,11 @@ export async function getMediaList(listId) {
       PageNumber: 1,
       PageSize: 15,
     })
+    .then(({ data }) => data)
     .catch((err) => {
-      console.error(err.message);
+      console.error(err);
     });
-
-  return response.data;
+  return { entities: response.Entities };
 }
 
 export async function getMediaPlayInfo(id) {
@@ -56,11 +60,12 @@ export async function getMediaPlayInfo(id) {
       MediaId: id,
       StreamType: "TRIAL",
     })
+    .then(({ data }) => data)
     .catch((err) => {
       console.error(err.message);
     });
 
-  return response.data;
+  return response;
 }
 
 export async function getLoginToken({ email, password }) {
@@ -70,12 +75,12 @@ export async function getLoginToken({ email, password }) {
       Password: password,
       Device: {
         PlatformCode: "WEB",
-        Name: "12345678-1234-1234-1234-123412345678",
+        Name: "7a6a86e5-356f-4795-8998-305e1b205531",
       },
     })
+    .then(({ data }) => data)
     .catch((err) => {
       console.error(err.message);
     });
-
-  return response.data.AuthorizationToken.Token;
+  return response.AuthorizationToken.Token;
 }

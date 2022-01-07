@@ -1,40 +1,34 @@
-// import React, { useContext, Fragment } from "react";
-import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
-// import AuthContext from "../../store/auth-context";
-
+import React, { useContext, Fragment } from "react";
+import { Link, useHistory } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
+import ButtonMain from "../UI/ButtonMain";
 import classes from "./Navigation.module.css";
 
 const Navigation = () => {
-  // const authCtx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
 
-  // const history = useHistory();
+  const history = useHistory();
 
-  // const isLoggedIn = authCtx.isLoggedIn;
+  const isLoggedIn = authCtx.isLoggedIn;
 
-  // const logoutHandler = () => {
-  //   // authCtx.logout();
-  //   history.replace("/");
-  // };
+  const logoutHandler = () => {
+    authCtx.logout();
+    history.replace("/");
+  };
 
   const content = (
     <Fragment>
       <ul>
-        <li>
-          <Link to="/auth">Login</Link>
-        </li>
-        {/* {!isLoggedIn && (
+        {!isLoggedIn && (
           <li>
             <Link to="/auth">Login</Link>
           </li>
         )}
         {isLoggedIn && (
-          
-            <li>
-              <button onClick={logoutHandler}>Logout</button>
-            </li>
-          
-        )} */}
+          <li>
+            <ButtonMain onClick={logoutHandler}>Logout</ButtonMain>
+          </li>
+        )}
       </ul>
     </Fragment>
   );
