@@ -1,0 +1,132 @@
+.auth {
+  margin: 7rem auto;
+  width: 100%;
+  max-width: 45rem;
+  border-radius: 6px;
+  background-color: #12011d69;
+  box-shadow: 0 0.6rem 1.5rem 3px rgba(204, 197, 197, 0.3),
+    0 -0.6rem 1.5rem 3px rgba(204, 197, 197, 0.3),
+    inset 0rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2),
+    inset 0.3rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2),
+    inset -0.3rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  text-align: center;
+  animation: move 0.8s 1 alternate both;
+}
+
+.auth h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: white;
+}
+
+.control {
+  margin-bottom: 1.5rem;
+}
+
+.control label {
+  display: block;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.control input {
+  font-size: 1.4rem;
+  background-color: #f1e1fc;
+  color: #38015c;
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  width: 90%;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.control input:focus {
+  outline: -webkit-focus-ring-color none 0px;
+}
+.control input:focus-visible {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .actions button {
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+  background-color: var(--color-primary-1);
+  border: 0.2rem solid var(--color-primary-1);
+  border-radius: 0.5rem;
+  padding: 0.5rem 2.5rem;
+  transition: all 0.1s ease;
+}
+
+.actions button:hover {
+  background-color: var(--color-primary-2);
+  border-color: var(--color-primary-2);
+} */
+
+.actions .toggle {
+  position: relative;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--color-primary-3);
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 0;
+  padding: 0.15rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.actions .toggle:hover {
+  background-color: transparent;
+  border-bottom: 0px solid var(--color-primary-3);
+  color: white;
+}
+
+.actions .toggle::after {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary-3);
+  transform: translateX(0%);
+  transition: all 0.2s ease;
+}
+
+.actions .toggle:hover::after {
+  transform: translateX(70%);
+  width: 0;
+}
+
+.invalid {
+  color: white;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-35px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

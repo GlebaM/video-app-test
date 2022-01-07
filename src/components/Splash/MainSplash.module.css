@@ -1,0 +1,17 @@
+.splash {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+}
+
+.splash h1 {
+  color: var(--color-primary-3);
+}
+
+.splash p {
+  padding-block: 2rem;
+}
+
+.splash__button {
+  align-self: flex-start;
+}
