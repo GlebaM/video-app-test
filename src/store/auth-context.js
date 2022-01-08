@@ -31,8 +31,11 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   const loginHandler = (token) => {
-    setLoginToken(token);
-    localStorage.setItem("loginToken", token);
+    if (!token) return;
+    if (token) {
+      setLoginToken(token);
+      localStorage.setItem("loginToken", token);
+    }
   };
 
   const contextValue = {

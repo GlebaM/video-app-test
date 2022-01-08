@@ -36,7 +36,7 @@ const Navigation = () => {
     <header className={classes.header}>
       <div className={classes.container}>
         <Link to="/" className={classes.logo}>
-          Video APP
+          MovieSwag
         </Link>
         <nav>{content}</nav>
       </div>

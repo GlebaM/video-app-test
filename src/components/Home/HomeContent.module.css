@@ -40,7 +40,6 @@
 
   .container::-webkit-scrollbar-thumb:hover {
     background-color: #064e4eb4;
-    /* background-color: var(--color-primary-2); */
     border: 3px solid transparent;
   }
 }

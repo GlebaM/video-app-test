@@ -41,4 +41,15 @@
   color: white;
   transition: all 0.15s ease;
   align-self: center;
+  transition: all 0.2s ease;
+}
+
+.header a:hover {
+  text-shadow: 0 0 1.5rem rgba(255, 255, 255, 0.609),
+    -0.4rem 0 1.5rem rgba(255, 255, 255, 0.589),
+    0.4rem 0 1.5rem rgba(255, 255, 255, 0.596);
+}
+
+.header a:active {
+  transform: translateY(2px) scale(0.99);
 }

@@ -1,6 +1,5 @@
 import { useState, useRef, useContext } from "react";
 import { useHistory } from "react-router-dom";
-// import LoadingSpinner from "../../components/UI/LoadingSpinner";
 import ButtonMain from "../UI/ButtonMain";
 import classes from "./AuthForm.module.css";
 import { getLoginToken } from "../../lib/api";

@@ -41,36 +41,3 @@ function App() {
 }
 
 export default App;
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const tokenData = await getPrimaryToken();
-//     localStorage.setItem("token", tokenData);
-//     setPrimaryToken(tokenData);
-//   };
-//   fetchData();
-// }, []);
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const { entities } = await getMediaList(3);
-//     setList(entities);
-//   };
-//   fetchData();
-// }, []);
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const item = await getMediaPlayInfo();
-//     setPlayer(item);
-//   };
-//   fetchData();
-// }, []);
-// useEffect(() => {
-//   const data = { email: "test@bsgroup.eu", password: "Test12!@" };
-//   const fetchData = async () => {
-//     const lg = await getLoginToken(data);
-//     setLogged(lg);
-//   };
-//   fetchData();
-// }, []);
