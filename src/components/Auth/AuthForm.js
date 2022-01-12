@@ -39,12 +39,15 @@ const AuthForm = () => {
       localStorage.setItem("loginTokenExpires", tokenData.TokenExpires);
       authCtx.login(tokenData.Token);
       if (tokenData.Token) {
-        setUserExists(false);
+        setUserExists(true);
         history.replace("/home");
       } else {
         setUserExists(false);
       }
     });
+    // ((err) => {
+    //   console.error(err.message);
+    // });
   };
 
   const registerSubmitHandler = (e) => {
