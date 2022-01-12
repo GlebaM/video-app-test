@@ -1,14 +1,15 @@
-.main {
-  width: min(85%, 1100px);
-
-  margin-inline: auto;
-  background-color: transparent;
-}
-
 .container {
   height: 100vh;
-  min-height: max-content;
+  overflow-y: auto;
+  min-height: fit-content;
   background: url("../../assets/sky-large.jpg");
   background-position: center;
   background-size: cover;
+}
+
+.main {
+  width: min(85%, 1100px);
+  margin-inline: auto;
+  margin-bottom: 3rem;
+  background-color: transparent;
 }

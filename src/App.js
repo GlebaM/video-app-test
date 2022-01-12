@@ -17,18 +17,26 @@ function App() {
       localStorage.setItem("token", tokenData);
     };
     fetchData();
+  }, []);
+
+  useEffect(() => {
     const loginToken = localStorage.getItem("loginToken");
-    ctx.login(loginToken);
+    if (loginToken) {
+      ctx.login(loginToken);
+    }
   }, [ctx]);
+
   return (
     <Layout>
       <Switch>
         <Route path="/" exact>
           <SplashPage />
         </Route>
-        <Route path="/auth">
-          <AuthPage />
-        </Route>
+        {!ctx.isLoggedIn && (
+          <Route path="/auth">
+            <AuthPage />
+          </Route>
+        )}
         <Route path="/home">
           <HomePage />
         </Route>

@@ -25,13 +25,13 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value.trim();
 
     //Add validation
-    const emailIsValid = enteredEmail;
+    const emailIsValid = enteredEmail.includes("@");
     const passwordIsValid = enteredPassword.length >= 7;
     if (!emailIsValid) {
       setEmailValidity(false);
       setTimeout(() => {
         setEmailValidity(true);
-      }, 1000);
+      }, 4000);
     }
 
     if (!emailIsValid || !passwordIsValid) {
@@ -78,7 +78,7 @@ const AuthForm = () => {
           <button
             type="button"
             className={classes.toggle}
-            onClick={switchAuthModeHandler}
+            onClick={!isLogin ? switchAuthModeHandler : ""}
           >
             {isLogin ? "Create new account" : "Login with existing account"}
           </button>

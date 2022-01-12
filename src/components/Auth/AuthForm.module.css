@@ -96,8 +96,9 @@
 }
 
 .invalid {
-  color: white;
+  color: rgb(245, 68, 68);
   margin-top: 1.5rem;
+  font-weight: 600;
   font-size: 1.4rem;
   letter-spacing: 1px;
 }

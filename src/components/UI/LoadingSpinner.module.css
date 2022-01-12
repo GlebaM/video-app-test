@@ -1,5 +1,6 @@
 .spinner {
   position: relative;
+  margin: 0 auto;
   display: inline-block;
   width: 80px;
   height: 80px;
@@ -14,8 +15,9 @@
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #9f5ccc;
-  border-color: #9f5ccc transparent #9f5ccc transparent;
+  border: 6px solid var(--color-primary-2);
+  border-color: var(--color-primary-2) transparent var(--color-primary-2)
+    transparent;
   animation: spinner 1.2s linear infinite;
 }
 @keyframes spinner {

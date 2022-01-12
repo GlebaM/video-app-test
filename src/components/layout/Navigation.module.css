@@ -18,7 +18,6 @@
 
 .logo {
   font-family: "Lato", sans-serif;
-  font-size: 4rem;
   color: white;
   margin: 0;
   align-self: center;
@@ -36,7 +35,7 @@
 
 .header a {
   font-weight: bold;
-  font-size: 2.6rem;
+  font-size: 3.6rem;
   text-decoration: none;
   color: white;
   transition: all 0.15s ease;
@@ -51,5 +50,5 @@
 }
 
 .header a:active {
-  transform: translateY(2px) scale(0.99);
+  transform: translateY(2px) scale(0.9);
 }

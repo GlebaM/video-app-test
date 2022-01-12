@@ -6,6 +6,7 @@ const defaultOptions = {
 };
 
 let api = axios.create(defaultOptions);
+const playerApi = axios.create(defaultOptions);
 
 api.interceptors.request.use(function (config) {
   const token = localStorage.getItem("token");
@@ -49,27 +50,26 @@ export async function getMediaList(listId) {
     })
     .then(({ data }) => data)
     .catch((err) => {
-      console.error(err);
+      throw new Error(err);
     });
   return { entities: response.Entities };
 }
 
-export async function getMediaPlayInfo(id) {
+export async function getMediaPlayInfo(id, streamType) {
   const response = await api
     .post("/Media/GetMediaPlayInfo", {
       MediaId: id,
-      StreamType: "TRIAL",
+      StreamType: streamType,
     })
     .then(({ data }) => data)
     .catch((err) => {
       console.error(err.message);
     });
-
   return response;
 }
 
 export async function getLoginToken({ email, password }) {
-  const response = await api
+  const response = await playerApi
     .post("/Authorization/SignIn", {
       Username: email,
       Password: password,

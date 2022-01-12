@@ -1,0 +1,83 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.541);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.76);
+  box-shadow: 0 0.6rem 2.5rem 0.5rem rgba(204, 197, 197, 0.3),
+    0 -0.6rem 1.5rem 0.5rem rgba(204, 197, 197, 0.3),
+    inset 0rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2),
+    inset 0.3rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2),
+    inset -0.3rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  /* background: linear-gradient(
+    50deg,
+    #df7ef35e 5%,
+    transparent 55%,
+    rgba(69, 83, 105, 0.589) 85%,
+    transparent
+  ); */
+  border-radius: 10px;
+  max-width: 95%;
+  max-height: 95vh;
+  width: 90%;
+  height: 88vh;
+  z-index: 100;
+  overflow: hidden;
+}
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.center {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  flex-grow: 1;
+  margin: 2rem;
+}
+
+.center > * {
+  margin: auto 0;
+}
+
+.actions {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.actions button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: white;
+  border: 0.2rem solid white;
+  border-radius: 0.5rem;
+  background-color: rgba(78, 76, 76, 0.616);
+  padding: 0.4rem 1.5rem;
+  transition: all 0.1s ease;
+}
+
+.actions button:hover {
+  border-color: var(--color-primary-2);
+}
+
+.actions button a {
+  padding: 0.7rem 2.5rem;
+}

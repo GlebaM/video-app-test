@@ -1,36 +1,59 @@
-import { useState, useEffect } from "react";
+import { useEffect, Fragment } from "react";
 import classes from "./VideoList.module.css";
 import { getMediaList } from "../../lib/api";
+import useHttp from "../../hooks/useHttp";
+import LoadingSpinner from "../UI/LoadingSpinner";
+import VideoItem from "./VideoItem";
 
 const VideoList = ({ listNo }) => {
-  const [mediaList, setMediaList] = useState([]);
+  const { sendRequest, status, error, data } = useHttp(getMediaList);
+  const dataList = { ...data };
+  const mediaList = dataList.entities;
+
   useEffect(() => {
-    const fetchData = async () => {
-      const { entities } = await getMediaList(listNo);
-      setMediaList(entities);
-    };
-    fetchData();
-  }, [listNo]);
+    sendRequest(listNo);
+  }, [listNo, sendRequest]);
+
+  let comments;
+
+  if (status === "pending") {
+    comments = (
+      <div className={classes.centered}>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (status === "completed" && (!mediaList || mediaList === 0 || error)) {
+    comments = (
+      <p>
+        We are very sorry but the MovieSwag API is anavailable. Please try again
+        later.
+      </p>
+    );
+  }
 
   return (
-    <div className={classes["video__wrapper"]}>
-      {mediaList &&
-        mediaList.map((item) => {
-          const src =
-            item.Images.filter((img) => img.ImageTypeCode === "FRAME")[0] ||
-            item.Images[0];
-          return (
-            <div className={classes.video__item}>
-              <img
-                id={src.MediaId}
-                src={src.Url}
-                alt=""
-                className={classes.video__img}
-              />
-            </div>
-          );
-        })}
-    </div>
+    <Fragment>
+      {comments}
+      {status === "completed" && (
+        <div className={classes["video__wrapper"]}>
+          {mediaList &&
+            mediaList.map((item) => {
+              const src =
+                item.Images.filter((img) => img.ImageTypeCode === "FRAME")[0] ||
+                item.Images[0];
+              const itemProps = {
+                mediaId: src.MediaId,
+                src: src.Url,
+                title: item.Title,
+                year: item.Year || null,
+              };
+              return <VideoItem key={item.Id} {...itemProps} />;
+            })}
+        </div>
+      )}
+    </Fragment>
   );
 };
 
