@@ -10,6 +10,7 @@ const ResponsivePlayer = ({ mediaUrl }) => {
         width="100%"
         height="100%"
         controls
+        volume={0.3}
       />
     </div>
   );

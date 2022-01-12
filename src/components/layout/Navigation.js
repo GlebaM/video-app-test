@@ -1,5 +1,5 @@
 import React, { useContext, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import ButtonMain from "../UI/ButtonMain";
 import classes from "./Navigation.module.css";
@@ -8,7 +8,7 @@ const Navigation = () => {
   const authCtx = useContext(AuthContext);
 
   const history = useHistory();
-
+  const location = useLocation();
   const isLoggedIn = authCtx.isLoggedIn;
 
   const logoutHandler = () => {

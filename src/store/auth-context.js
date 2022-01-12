@@ -4,21 +4,24 @@ const AuthContext = React.createContext({
   token: "",
   loginToken: "",
   isLoggedIn: false,
+  authorized: false,
+  subscribed: false,
   login: () => {},
   logout: () => {},
 });
 
 export const AuthContextProvider = (props) => {
+  const [token, setToken] = useState();
+  const [loginToken, setLoginToken] = useState();
+
   let initialToken = localStorage.getItem("token");
   initialToken = initialToken ? initialToken.token : "";
-  const [token, setToken] = useState(initialToken);
   if (initialToken) {
     setToken(initialToken);
   }
 
   let initialLoginToken = localStorage.getItem("loginToken");
   initialLoginToken = initialLoginToken ? initialLoginToken.loginToken : "";
-  const [loginToken, setLoginToken] = useState(initialLoginToken);
   if (initialLoginToken) {
     setToken(initialLoginToken);
   }
@@ -31,9 +34,11 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   const loginHandler = (token) => {
+    console.log(token);
     if (!token) return;
     if (token) {
       setLoginToken(token);
+      localStorage.setItem("authorized", true);
       localStorage.setItem("loginToken", token);
     }
   };

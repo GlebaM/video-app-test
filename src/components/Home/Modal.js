@@ -13,40 +13,59 @@ const Backdrop = ({ onClose }) => {
 };
 
 const ModalOverlay = ({ mediaUrl, status, error, onClose }) => {
-  console.log(mediaUrl, status);
+  const authCtx = useContext(AuthContext);
+  console.log(mediaUrl, status, error);
+
+  let content = <div className={classes.content}></div>;
+  if (status === "pending") {
+    content = (
+      <div className={classes.center}>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (status === "completed" && !error && mediaUrl && !authCtx.isLoggedIn) {
+    content = (
+      <div className={classes.content}>
+        <ResponsivePlayer mediaUrl={mediaUrl} status={status} error={error} />
+      </div>
+    );
+  }
+
+  if (status === "completed" && !authCtx.subscribed && authCtx.isLoggedIn) {
+    content = (
+      <div className={classes.center}>
+        <p>You need to be subscribed.</p>
+      </div>
+    );
+  }
+  if (status === "completed" && !mediaUrl && !error) {
+    content = (
+      <div className={classes.center}>
+        <p>We're sorry but apparently there is no data for that video.</p>
+      </div>
+    );
+  }
+  if (status === "completed" && error) {
+    content = (
+      <div className={classes.center}>
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  if (status === "completed" && authCtx.subscribed) {
+    content = (
+      <div className={classes.content}>
+        <ResponsivePlayer mediaUrl={mediaUrl} status={status} error={error} />
+      </div>
+    );
+  }
+
   return (
     <div className={classes.modal}>
-      {status === "pending" && (
-        <div className={classes.center}>
-          <LoadingSpinner />
-        </div>
-      )}
-
-      {status === "completed" && mediaUrl && (
-        <>
-          <div className={classes.content}>
-            <ResponsivePlayer
-              mediaUrl={mediaUrl}
-              status={status}
-              error={error}
-            />
-          </div>
-        </>
-      )}
-
-      {status === "completed" && error && (
-        <div className={classes.center}>
-          {error && <p>An error occured. {error}</p>}
-        </div>
-      )}
-
-      {status === "completed" && !mediaUrl && (
-        <div className={classes.center}>
-          {!mediaUrl && !error && (
-            <p>We're sorry but apparently there is no data for that video.</p>
-          )}
-        </div>
-      )}
+      {content}
       <div className={classes.actions}>
         <button onClick={onClose}>Close</button>
       </div>
@@ -55,15 +74,15 @@ const ModalOverlay = ({ mediaUrl, status, error, onClose }) => {
 };
 
 const Modal = ({ mediaId, onClose }) => {
-  const ctx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
   const { sendRequest, status, error, data } = useHttp(getMediaPlayInfo);
   const dataVideo = { ...data };
+  let streamType = authCtx.isLoggedIn ? "MAIN" : "TRIAL";
 
   useEffect(() => {
-    let streamType = ctx.isLoggedIn ? "MAIN" : "TRIAL";
     sendRequest(mediaId, streamType);
-  }, [ctx.isLoggedIn, mediaId, sendRequest]);
-  console.log(status, error, data);
+  }, [authCtx.isLoggedIn, mediaId, sendRequest, streamType]);
+  console.log(status, error, dataVideo);
 
   const backdrop = document.querySelector("#backdrop-root");
   const modal = document.querySelector("#overlay-root");

@@ -15,11 +15,17 @@
   aspect-ratio: 16 / 9;
   cursor: pointer;
   border-radius: 12px;
+  transition: all 0.6s ease;
 }
 
 .video__img {
   opacity: 0.8;
   filter: brightness(120%);
+  transition: all 0s ease;
+}
+.video__img:hover {
+  opacity: 0.99;
+  backdrop-filter: blur(1px);
 }
 
 .video__item p {

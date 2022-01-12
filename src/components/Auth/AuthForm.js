@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import ButtonMain from "../UI/ButtonMain";
 import classes from "./AuthForm.module.css";
 import { getLoginToken } from "../../lib/api";
+// import { getAuthToken } from "../../lib/api";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
@@ -31,7 +32,7 @@ const AuthForm = () => {
       setEmailValidity(false);
       setTimeout(() => {
         setEmailValidity(true);
-      }, 4000);
+      }, 1000);
     }
 
     if (!emailIsValid || !passwordIsValid) {
@@ -44,15 +45,29 @@ const AuthForm = () => {
       ctx.login(lg);
     };
     fetchData();
+
+    // const data = { Username: enteredEmail, Password: enteredPassword };
+    // getAuthToken(data).then((tokenData) => {
+    //   localStorage.setItem("loginToken", tokenData.Token);
+    //   localStorage.setItem("loginTokenExpires", tokenData.TokenExpires);
+    //   ctx.login(tokenData.Token);
+    //   console.log(tokenData.Token);
+    //   console.log(tokenData.TokenExpires);
+    // });
     history.replace("/home");
 
     emailInputRef.current.value = "";
     passwordInputRef.current.value = "";
   };
+
+  const registerSubmitHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <section className={classes.auth}>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={isLogin ? submitHandler : registerSubmitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
           <input type="email" id="email" ref={emailInputRef} required />
@@ -78,7 +93,7 @@ const AuthForm = () => {
           <button
             type="button"
             className={classes.toggle}
-            onClick={!isLogin ? switchAuthModeHandler : ""}
+            onClick={switchAuthModeHandler}
           >
             {isLogin ? "Create new account" : "Login with existing account"}
           </button>
