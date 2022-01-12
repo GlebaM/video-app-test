@@ -9,6 +9,7 @@ const Navigation = () => {
 
   const history = useHistory();
   const location = useLocation();
+
   const isLoggedIn = authCtx.isLoggedIn;
 
   const logoutHandler = () => {
@@ -19,7 +20,7 @@ const Navigation = () => {
   const content = (
     <Fragment>
       <ul>
-        {!isLoggedIn && (
+        {!isLoggedIn && location.pathname !== "/auth" && (
           <li>
             <Link to="/auth">Login</Link>
           </li>

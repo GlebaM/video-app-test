@@ -6,6 +6,13 @@
   max-height: 100%;
   aspect-ratio: 16 / 9;
   cursor: pointer;
+  background: linear-gradient(
+    40deg,
+    rgba(184, 140, 60, 0.794),
+    rgba(60, 145, 184, 0.794)
+  );
+  border-radius: 1.2rem;
+  transition: all 0.3s ease;
 }
 
 .video__item .video__img {
@@ -14,18 +21,21 @@
   object-fit: cover;
   aspect-ratio: 16 / 9;
   cursor: pointer;
-  border-radius: 12px;
-  transition: all 0.6s ease;
+  border-radius: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.video__item:hover {
+  background-color: rgba(0, 0, 0, 0.424);
 }
 
 .video__img {
-  opacity: 0.8;
-  filter: brightness(120%);
-  transition: all 0s ease;
+  opacity: 0.7;
+  transition: 0.3s ease;
 }
 .video__img:hover {
   opacity: 0.99;
-  backdrop-filter: blur(1px);
+  filter: brightness(120%);
 }
 
 .video__item p {

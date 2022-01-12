@@ -129,7 +129,7 @@ export async function getPrimaryToken() {
       console.error(err.message);
     });
 
-  const data = await response.AuthorizationToken.Token;
+  const data = await response.AuthorizationToken;
   return data;
 }
 
@@ -159,7 +159,7 @@ export async function getLoginToken() {
       console.error(err.message);
     });
 
-  const data = await response.AuthorizationToken.Token;
+  const data = await response.AuthorizationToken;
   return data;
 }
 
