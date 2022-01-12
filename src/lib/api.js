@@ -6,7 +6,7 @@ const defaultOptions = {
 };
 
 let api = axios.create(defaultOptions);
-const playerApi = axios.create(defaultOptions);
+const loginApi = axios.create(defaultOptions);
 
 api.interceptors.request.use(function (config) {
   const token = localStorage.getItem("token");
@@ -20,7 +20,7 @@ api.interceptors.request.use(function (config) {
 });
 
 export async function getPrimaryToken() {
-  const response = await api
+  const response = await loginApi
     .post("/Authorization/SignIn", {
       Device: {
         PlatformCode: "WEB",
@@ -69,7 +69,7 @@ export async function getMediaPlayInfo(id, streamType) {
 }
 
 export async function getLoginToken({ email, password }) {
-  const response = await playerApi
+  const response = await loginApi
     .post("/Authorization/SignIn", {
       Username: email,
       Password: password,

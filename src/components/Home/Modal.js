@@ -6,7 +6,7 @@ import useHttp from "../../hooks/useHttp";
 import AuthContext from "../../store/auth-context";
 
 import ResponsivePlayer from "./ResponsivePlayer";
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const Backdrop = ({ onClose }) => {
   return <div className={classes.backdrop} onClick={onClose} />;
@@ -21,6 +21,7 @@ const ModalOverlay = ({ mediaUrl, status, error, onClose }) => {
           <LoadingSpinner />
         </div>
       )}
+
       {status === "completed" && mediaUrl && (
         <>
           <div className={classes.content}>
@@ -33,13 +34,17 @@ const ModalOverlay = ({ mediaUrl, status, error, onClose }) => {
         </>
       )}
 
-      {status === "completed" && (error || !mediaUrl) && (
+      {status === "completed" && error && (
+        <div className={classes.center}>
+          {error && <p>An error occured. {error}</p>}
+        </div>
+      )}
+
+      {status === "completed" && !mediaUrl && (
         <div className={classes.center}>
           {!mediaUrl && !error && (
             <p>We're sorry but apparently there is no data for that video.</p>
           )}
-          {!mediaUrl && error && <p>An error occured.</p>}
-          {mediaUrl && error && <p>An error occured.</p>}
         </div>
       )}
       <div className={classes.actions}>

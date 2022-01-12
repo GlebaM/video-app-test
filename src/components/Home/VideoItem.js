@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 // import React, { useContext, useState, Fragment } from "react";
 import classes from "./VideoItem.module.css";
 // import AuthContext from "../../store/auth-context";
-import Modal from "../UI/Modal";
+import Modal from "./Modal";
 
 const VideoItem = ({ mediaId, src, title, year }) => {
   const [modalActive, setModalActive] = useState(false);

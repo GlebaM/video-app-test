@@ -3,7 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import AuthContext from "./store/auth-context";
 import { getPrimaryToken } from "./lib/api";
 
-import Layout from "./components/layout/Layout";
+import Layout from "./components/Layout/Layout";
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import SplashPage from "./pages/SplashPage";
