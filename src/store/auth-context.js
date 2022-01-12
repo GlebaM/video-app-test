@@ -34,7 +34,6 @@ export const AuthContextProvider = (props) => {
   }, []);
 
   const loginHandler = (token) => {
-    console.log(token);
     if (!token) return;
     if (token) {
       setLoginToken(token);

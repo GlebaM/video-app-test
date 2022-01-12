@@ -14,7 +14,6 @@ const Backdrop = ({ onClose }) => {
 
 const ModalOverlay = ({ mediaUrl, status, error, onClose }) => {
   const authCtx = useContext(AuthContext);
-  console.log(mediaUrl, status, error);
 
   let content = <div className={classes.content}></div>;
   if (status === "pending") {
@@ -77,12 +76,11 @@ const Modal = ({ mediaId, onClose }) => {
   const authCtx = useContext(AuthContext);
   const { sendRequest, status, error, data } = useHttp(getMediaPlayInfo);
   const dataVideo = { ...data };
-  let streamType = authCtx.isLoggedIn ? "MAIN" : "TRIAL";
 
   useEffect(() => {
+    let streamType = authCtx.isLoggedIn ? "MAIN" : "TRIAL";
     sendRequest(mediaId, streamType);
-  }, [authCtx.isLoggedIn, mediaId, sendRequest, streamType]);
-  console.log(status, error, dataVideo);
+  }, [authCtx.isLoggedIn, mediaId, sendRequest]);
 
   const backdrop = document.querySelector("#backdrop-root");
   const modal = document.querySelector("#overlay-root");

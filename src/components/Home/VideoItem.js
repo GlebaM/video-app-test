@@ -1,7 +1,5 @@
 import React, { useState, Fragment } from "react";
-// import React, { useContext, useState, Fragment } from "react";
 import classes from "./VideoItem.module.css";
-// import AuthContext from "../../store/auth-context";
 import Modal from "./Modal";
 
 const VideoItem = ({ mediaId, src, title, year }) => {
@@ -17,7 +15,6 @@ const VideoItem = ({ mediaId, src, title, year }) => {
 
   return (
     <Fragment>
-      {/* {modalActive && ctx.isLoggedIn && ( */}
       {modalActive && <Modal onClose={modalCloseHandler} mediaId={mediaId} />}
       <div
         onClick={videoModalHandler}

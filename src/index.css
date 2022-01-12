@@ -11,6 +11,9 @@
   --color-primary-2: #0bbbbbcc;
   --color-primary-3: #0ccecedf;
   --color-primary-4-bg: #12011d69;
+  --color-primary-5: rgb(30, 250, 221);
+  --color-error: rgb(251, 104, 6);
+  --color-invalid: rgb(245, 68, 68);
 }
 
 html {
