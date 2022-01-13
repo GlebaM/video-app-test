@@ -15,6 +15,24 @@
   transition: all 0.3s ease;
 }
 
+.video__item::after {
+  position: absolute;
+  content: "";
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+  background: linear-gradient(
+    0deg,
+    rgba(7, 6, 4, 0.794),
+    transparent 25%,
+    transparent
+  );
+  border-radius: 1.2rem;
+}
+
 .video__item .video__img {
   position: absolute;
   width: 100%;
@@ -22,18 +40,12 @@
   aspect-ratio: 16 / 9;
   cursor: pointer;
   border-radius: 1.2rem;
+  opacity: 0.7;
+  transition: 0.3s ease;
   transition: all 0.3s ease;
 }
 
-.video__item:hover {
-  background-color: rgba(0, 0, 0, 0.424);
-}
-
-.video__img {
-  opacity: 0.7;
-  transition: 0.3s ease;
-}
-.video__img:hover {
+.video__item:hover .video__img {
   opacity: 0.99;
   filter: brightness(120%);
 }
@@ -43,6 +55,11 @@
   font-weight: 600;
   z-index: 10;
   opacity: 0.99;
+  transition: all 0.3s ease;
+}
+
+.video__item:hover p {
+  font-size: x-large;
 }
 
 @media only screen and (max-width: 40em) {

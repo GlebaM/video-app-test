@@ -29,7 +29,7 @@ export async function getAuthToken(values = {}) {
     })
     .then(({ data }) => data)
     .catch((err) => {
-      console.log(err);
+      console.error(err.message);
       throw new Error(err);
     });
   return response.AuthorizationToken;
