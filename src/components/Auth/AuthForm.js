@@ -43,11 +43,9 @@ const AuthForm = () => {
         history.replace("/home");
       } else {
         setUserExists(false);
+        throw new Error(`Data hasn't arrivedd`);
       }
     });
-    // ((err) => {
-    //   console.error(err.message);
-    // });
   };
 
   const registerSubmitHandler = (e) => {

@@ -29,6 +29,7 @@ export async function getAuthToken(values = {}) {
     })
     .then(({ data }) => data)
     .catch((err) => {
+      console.log(err);
       throw new Error(err);
     });
   return response.AuthorizationToken;
@@ -51,10 +52,10 @@ export async function getMediaList(listId) {
   return { entities: response.Entities };
 }
 
-export async function getMediaPlayInfo(id, streamType) {
+export async function getMediaPlayInfo({ mediaId, streamType }) {
   const response = await api
     .post("/Media/GetMediaPlayInfo", {
-      MediaId: id,
+      MediaId: mediaId,
       StreamType: streamType,
     })
     .then(({ data }) => data)

@@ -76,11 +76,11 @@ const Modal = ({ mediaId, onClose }) => {
   const authCtx = useContext(AuthContext);
   const { sendRequest, status, error, data } = useHttp(getMediaPlayInfo);
   const dataVideo = { ...data };
+  let streamType = authCtx.authorized ? "MAIN" : "TRIAL";
 
   useEffect(() => {
-    let streamType = authCtx.isLoggedIn ? "MAIN" : "TRIAL";
-    sendRequest(mediaId, streamType);
-  }, [authCtx.isLoggedIn, mediaId, sendRequest]);
+    sendRequest({ mediaId, streamType });
+  }, [authCtx.isLoggedIn, mediaId, sendRequest, streamType]);
 
   const backdrop = document.querySelector("#backdrop-root");
   const modal = document.querySelector("#overlay-root");
