@@ -4,15 +4,15 @@ const AuthContext = React.createContext({
   token: "",
   loginToken: "",
   isLoggedIn: false,
-  authorized: false,
   subscribed: false,
   login: () => {},
   logout: () => {},
 });
 
 export const AuthContextProvider = (props) => {
-  const [token, setToken] = useState();
-  const [loginToken, setLoginToken] = useState();
+  const [token, setToken] = useState("");
+  const [loginToken, setLoginToken] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
   let initialToken = localStorage.getItem("token");
   initialToken = initialToken ? initialToken.token : "";
@@ -26,18 +26,23 @@ export const AuthContextProvider = (props) => {
     setToken(initialLoginToken);
   }
 
+  let initSubscribe = localStorage.getItem("subscribed");
+  if (initSubscribe) {
+    setSubscribed(initSubscribe || false);
+  }
+
   const userIsLoggedIn = !!loginToken;
 
   const logoutHandler = useCallback(() => {
     setLoginToken(null);
     localStorage.removeItem("loginToken");
+    localStorage.removeItem("loginTokenExpires");
   }, []);
 
   const loginHandler = (token) => {
     if (!token) return;
     if (token) {
       setLoginToken(token);
-      localStorage.setItem("authorized", true);
       localStorage.setItem("loginToken", token);
     }
   };
@@ -46,6 +51,7 @@ export const AuthContextProvider = (props) => {
     token: token,
     loginToken: loginToken,
     isLoggedIn: userIsLoggedIn,
+    subscribed: subscribed,
     login: loginHandler,
     logout: logoutHandler,
   };

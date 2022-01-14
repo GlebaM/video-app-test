@@ -19,6 +19,7 @@ api.interceptors.request.use(function (config) {
 });
 
 export async function getAuthToken(values = {}) {
+  let error;
   const response = await loginApi
     .post("/Authorization/SignIn", {
       ...values,
@@ -27,12 +28,15 @@ export async function getAuthToken(values = {}) {
         Name: "7a6a86e5-356f-4795-8998-305e1b205531",
       },
     })
-    .then(({ data }) => data)
+    .then(({ data }) => {
+      if (!data) throw new Error();
+      return data;
+    })
     .catch((err) => {
-      console.error(err.message);
-      throw new Error(err);
+      error = err;
+      return;
     });
-  return response.AuthorizationToken;
+  return response?.AuthorizationToken ? response.AuthorizationToken : error;
 }
 
 export async function getMediaList(listId) {

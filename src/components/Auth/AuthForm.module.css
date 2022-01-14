@@ -1,7 +1,7 @@
 .auth {
-  margin: 7rem auto;
+  margin: 7rem auto 0;
   width: 100%;
-  max-width: 45rem;
+  max-width: 50rem;
   border-radius: 6px;
   background-color: #12011d69;
   box-shadow: 0 0.6rem 1.5rem 3px rgba(204, 197, 197, 0.3),
@@ -67,6 +67,15 @@
   color: var(--color-error);
 }
 
+.user-fetch-error > p {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  max-width: 90%;
+  text-align: center;
+  margin: 0 auto;
+  color: var(--color-error);
+}
+
 .actions {
   margin-top: 2rem;
   display: flex;
@@ -109,6 +118,15 @@
 .actions .toggle:hover::after {
   transform: translateX(70%);
   width: 0;
+}
+.loading {
+  min-height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading > * {
+  transform: scale(1.6);
 }
 
 .invalid {

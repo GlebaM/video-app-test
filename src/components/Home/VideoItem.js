@@ -1,11 +1,11 @@
 import React, { useState, Fragment } from "react";
 import classes from "./VideoItem.module.css";
-import Modal from "./Modal";
+import Modal from "./Modal/Modal";
 
 const VideoItem = ({ mediaId, src, title, year }) => {
   const [modalActive, setModalActive] = useState(false);
 
-  const videoModalHandler = (e) => {
+  const videoModalHandler = () => {
     setModalActive(true);
   };
 
