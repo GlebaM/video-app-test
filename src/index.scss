@@ -7,13 +7,14 @@
 }
 
 :root {
-  --color-primary-1: #086e6ecc;
-  --color-primary-2: #0bbbbbcc;
-  --color-primary-3: #0ccecedf;
-  --color-primary-4-bg: #12011d69;
-  --color-primary-5: rgb(30, 250, 221);
-  --color-error: rgb(251, 104, 6);
-  --color-invalid: rgb(245, 68, 68);
+  --color-turquoise-1: #086e6ecc;
+  --color-turquoise-2: #0bbbbbcc;
+  --color-turquoise-3: #0ccecedf;
+  --color-turquoise-4: rgb(30, 250, 221);
+  --color-turquoise-5: #064e4eb4;
+  --color-grey: rgba(78, 76, 76, 0.616);
+  --color-grey-dark: #12011d69;
+  --color-orange-1: rgb(251, 104, 6);
 }
 
 html {
@@ -51,7 +52,7 @@ h2,
 h3,
 p,
 a {
-  color: white;
+  color: rgb(246, 240, 228);
 }
 
 h1 {

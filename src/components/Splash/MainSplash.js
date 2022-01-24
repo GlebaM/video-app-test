@@ -2,7 +2,7 @@ import { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import ButtonMain from "../UI/ButtonMain";
-import classes from "./MainSplash.module.css";
+import classes from "./MainSplash.module.scss";
 
 function MainSplash() {
   const ctx = useContext(AuthContext);
@@ -18,7 +18,7 @@ function MainSplash() {
         <Fragment>
           <p>Login and enjoy MovieSwag full potential</p>
           <ButtonMain className={classes.splash__button}>
-            <Link to="/auth" className={classes.logo}>
+            <Link to="/auth" className={classes.splash__logo}>
               Login
             </Link>
           </ButtonMain>
@@ -30,7 +30,7 @@ function MainSplash() {
         <p> See a sample on Home page by clicking Get started.</p>
       )}
       <ButtonMain className={classes.splash__button}>
-        <Link to="/home" className={classes.logo}>
+        <Link to="/home" className={classes.splash__logo}>
           Get started
         </Link>
       </ButtonMain>

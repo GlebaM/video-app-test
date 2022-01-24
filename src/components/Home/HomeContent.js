@@ -1,5 +1,5 @@
 import VideoList from "./VideoList";
-import classes from "./HomeContent.module.css";
+import classes from "./HomeContent.module.scss";
 
 const HomeContent = () => {
   return (

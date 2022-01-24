@@ -1,5 +1,5 @@
 import { useEffect, Fragment } from "react";
-import classes from "./VideoList.module.css";
+import classes from "./VideoList.module.scss";
 import { getMediaList } from "../../lib/api";
 import useHttp from "../../hooks/useHttp";
 import LoadingSpinner from "../UI/LoadingSpinner";

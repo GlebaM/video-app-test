@@ -1,4 +1,4 @@
-import classes from "./ResponsivePlayer.module.css";
+import classes from "./ResponsivePlayer.module.scss";
 import ReactPlayer from "react-player";
 
 const ResponsivePlayer = ({ mediaUrl }) => {

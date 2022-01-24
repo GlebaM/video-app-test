@@ -1,4 +1,4 @@
-import classes from "./ButtonMain.module.css";
+import classes from "./ButtonMain.module.scss";
 
 const ButtonMain = ({ children, onClick, className, type }) => {
   return (

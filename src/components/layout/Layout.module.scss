@@ -5,11 +5,11 @@
   background: url("../../assets/sky-large.jpg");
   background-position: center;
   background-size: cover;
-}
 
-.main {
-  width: min(85%, 1100px);
-  margin-inline: auto;
-  margin-bottom: 3rem;
-  background-color: transparent;
+  &__main {
+    width: min(85%, 1100px);
+    margin-inline: auto;
+    margin-bottom: 3rem;
+    background-color: transparent;
+  }
 }

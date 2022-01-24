@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import ButtonMain from "../UI/ButtonMain";
-import classes from "./AuthForm.module.css";
+import classes from "./AuthForm.module.scss";
 import { getAuthToken } from "../../lib/api";
 import AuthContext from "../../store/auth-context";
 import { useForm } from "react-hook-form";
@@ -86,7 +86,9 @@ const AuthForm = () => {
                 onClick={() => !userExists && setUserExists(true)}
               />
             </div>
-            <p className={classes.message}>{errors.username?.message}</p>
+            {errors.username?.message && (
+              <p className={classes.message}>{errors.username?.message}</p>
+            )}
             <div className={classes.control}>
               <label htmlFor="password">Your Password</label>
               <input
@@ -100,7 +102,9 @@ const AuthForm = () => {
                 onClick={() => !userExists && setUserExists(true)}
               />
             </div>
-            <p className={classes.message}>{errors.password?.message}</p>
+            {errors.password?.message && (
+              <p className={classes.message}>{errors.password?.message}</p>
+            )}
             {!userExists && (
               <div className={classes["user-fetch-error"]}>
                 <p>

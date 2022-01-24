@@ -34,6 +34,7 @@
 }
 
 .center > * {
+  text-align: center;
   margin: auto 0;
 }
 
@@ -41,33 +42,32 @@
   position: absolute;
   right: 1rem;
   top: 1rem;
-}
 
-.actions button {
-  cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: white;
-  border: 0.2rem solid white;
-  border-radius: 0.5rem;
-  background-color: rgba(78, 76, 76, 0.616);
-  padding: 0.4rem 1.5rem;
-  transition: all 0.1s ease;
-}
+  & button {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+    border: 0.2rem solid white;
+    border-radius: 0.5rem;
+    background-color: var(--color-grey);
+    padding: 0.4rem 1.5rem;
+    transition: all 0.1s ease;
+  }
 
-.actions button:hover {
-  border-color: var(--color-primary-2);
-}
+  & button:hover {
+    border-color: var(--color-turquoise-2);
+  }
 
-.actions button a {
-  padding: 0.7rem 2.5rem;
+  & button a {
+    padding: 0.7rem 2.5rem;
+  }
 }
 
 @keyframes openModal {
   0% {
     opacity: 0;
-
     transform: translate(-50%, -50%) scale(0.35);
   }
 

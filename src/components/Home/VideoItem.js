@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import classes from "./VideoItem.module.css";
+import classes from "./VideoItem.module.scss";
 import Modal from "./Modal/Modal";
 
 const VideoItem = ({ mediaId, src, title, year }) => {

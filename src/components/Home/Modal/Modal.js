@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useContext } from "react";
 import ReactDOM from "react-dom";
-import classes from "./Modal.module.css";
+import classes from "./Modal.module.scss";
 import { getMediaPlayInfo } from "../../../lib/api";
 import useHttp from "../../../hooks/useHttp";
 import AuthContext from "../../../store/auth-context";

@@ -1,9 +1,9 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import AuthContext from "../../../store/auth-context";
 import ResponsivePlayer from "./../ResponsivePlayer";
 import LoadingSpinner from "../../UI/LoadingSpinner";
 
-import classes from "./ModalOverlay.module.css";
+import classes from "./ModalOverlay.module.scss";
 
 const ModalOverlay = ({ mediaUrl, status, error, onClose }) => {
   const authCtx = useContext(AuthContext);

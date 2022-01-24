@@ -1,0 +1,52 @@
+.splash {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+  animation: appear 0.6s ease-in-out 1 alternate both;
+
+  & h1 {
+    color: var(--color-turquoise-3);
+  }
+
+  & p {
+    padding-block: 2rem;
+  }
+
+  &__button {
+    align-self: flex-start;
+  }
+
+  @media screen and (max-width: 40em) {
+    margin-top: 2rem;
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    opacity: 0;
+    transform: translate(30px);
+  }
+  10% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
