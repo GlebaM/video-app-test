@@ -1,11 +1,16 @@
 import { Fragment, useContext } from "react";
-import { Link } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
+import { useHistory } from "react-router-dom";
 import ButtonMain from "../UI/ButtonMain";
 import classes from "./MainSplash.module.scss";
 
 function MainSplash() {
-  const ctx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
+  const history = useHistory();
+
+  const pathHandler = (href) => {
+    history.replace(href);
+  };
   return (
     <div className={classes.splash}>
       <h1>MovieSwag is where movies happen</h1>
@@ -14,25 +19,31 @@ function MainSplash() {
         <b>MovieSwag</b> subscription. There is ove 50 000 movies waiting for
         you.
       </p>
-      {!ctx.isLoggedIn && (
+      {!authCtx.isLoggedIn && (
         <Fragment>
           <p>Login and enjoy MovieSwag full potential</p>
-          <ButtonMain className={classes.splash__button}>
-            <Link to="/auth" className={classes.splash__logo}>
-              Login
-            </Link>
+          <ButtonMain
+            onClick={() => {
+              pathHandler("/auth");
+            }}
+            className={classes.splash__button}
+          >
+            Login
           </ButtonMain>
         </Fragment>
       )}
-      {!ctx.isLoggedIn ? (
+      {!authCtx.isLoggedIn ? (
         <p> or see a sample on Home page by pressing Get started.</p>
       ) : (
         <p> See a sample on Home page by clicking Get started.</p>
       )}
-      <ButtonMain className={classes.splash__button}>
-        <Link to="/home" className={classes.splash__logo}>
-          Get started
-        </Link>
+      <ButtonMain
+        onClick={() => {
+          pathHandler("/home");
+        }}
+        className={classes.splash__button}
+      >
+        Get started
       </ButtonMain>
     </div>
   );

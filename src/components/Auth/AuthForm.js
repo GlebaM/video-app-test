@@ -33,8 +33,6 @@ const AuthForm = () => {
     const username = data.username.trim();
     const password = data.password.trim();
 
-    // if (!username || !password) return;
-
     const sentData = { Username: username, Password: password };
     setIsLoading(true);
     try {
@@ -61,14 +59,15 @@ const AuthForm = () => {
   };
 
   return (
-    <>
+    <section className={classes.auth}>
       {isLoading && (
         <div className={classes.loading}>
           <LoadingSpinner />
         </div>
       )}
+
       {!isLoading && (
-        <section className={classes.auth}>
+        <>
           <h1>{isLogin ? "Login" : "Sign Up"}</h1>
 
           <form
@@ -81,7 +80,9 @@ const AuthForm = () => {
               <input
                 type="email"
                 id="email"
-                {...register("username", { required: "Username is required!" })}
+                {...register("username", {
+                  required: "Username is required!",
+                })}
                 placeholder="Username / email"
                 onClick={() => !userExists && setUserExists(true)}
               />
@@ -96,7 +97,10 @@ const AuthForm = () => {
                 id="password"
                 {...register("password", {
                   required: "Password is required!",
-                  minLength: { value: 6, message: "Min password length is 6" },
+                  minLength: {
+                    value: 6,
+                    message: "Min password length is 6",
+                  },
                 })}
                 placeholder="Password"
                 onClick={() => !userExists && setUserExists(true)}
@@ -117,7 +121,6 @@ const AuthForm = () => {
               <ButtonMain type="submit">
                 {isLogin ? "Login" : "Create Account"}
               </ButtonMain>
-              )
               <button
                 type="button"
                 className={classes.toggle}
@@ -127,9 +130,9 @@ const AuthForm = () => {
               </button>
             </div>
           </form>
-        </section>
+        </>
       )}
-    </>
+    </section>
   );
 };
 

@@ -5,11 +5,15 @@
   background: url("../../assets/sky-large.jpg");
   background-position: center;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
 
   &__main {
     width: min(85%, 1100px);
-    margin-inline: auto;
-    margin-bottom: 3rem;
+    align-self: center;
+    // flex: 1 1 100%;
+    // margin-inline: auto;
+    margin-bottom: 1rem;
     background-color: transparent;
   }
 }

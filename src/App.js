@@ -67,7 +67,11 @@ function App() {
           <HomePage />
         </Route>
         <Route path="*">
-          <Redirect to="/" />
+          {<Redirect to="/" /> || (
+            <div>
+              <h1>Something went wrong</h1>
+            </div>
+          )}
         </Route>
       </Switch>
     </Layout>

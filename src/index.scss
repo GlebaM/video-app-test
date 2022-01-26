@@ -20,6 +20,8 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media only screen and (max-width: 68.75em) {
