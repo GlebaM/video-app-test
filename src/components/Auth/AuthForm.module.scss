@@ -4,11 +4,12 @@
   max-width: 50rem;
   border-radius: 6px;
   background-color: #12011d69;
-  box-shadow: 0 0.6rem 1.5rem 3px rgba(204, 197, 197, 0.3),
-    0 -0.6rem 1.5rem 3px rgba(204, 197, 197, 0.3),
+  box-shadow: 0 0.6rem 1.8rem 3px rgba(206, 95, 95, 0.35),
+    0 -0.6rem 1.8rem 3px rgba(206, 95, 95, 0.35),
     inset 0rem 0.5rem 0.3rem rgba(0, 0, 0, 0.2),
     inset 0.3rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2),
     inset -0.3rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
   padding: 2rem;
   text-align: center;
   animation: appear 0.8s 1 alternate both;
@@ -99,14 +100,14 @@
   & .toggle {
     position: relative;
     margin-top: 1rem;
+    padding: 0.15rem 1.5rem 0.5rem;
     font-size: 1.3rem;
     font-weight: 600;
+    letter-spacing: 1px;
     background-color: transparent;
     color: var(--color-turquoise-3);
-    letter-spacing: 1px;
     border: none;
     border-radius: 0;
-    padding: 0.15rem 1.5rem 0.5rem;
     transition: all 0.2s ease;
   }
 
@@ -114,6 +115,7 @@
     background-color: transparent;
     border-bottom: 0px solid var(--color-turquoise-3);
     color: white;
+    cursor: pointer;
   }
 
   & .toggle::after {

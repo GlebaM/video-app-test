@@ -15,6 +15,21 @@
     margin-inline: auto;
   }
 
+  &__link {
+    font-size: 2.6rem;
+    color: var(--color-brick-1);
+
+    &:hover {
+      text-shadow: 0 0 0.4rem var(--color-brick-2),
+        -0.1rem 0 0.4rem var(--color-brick-2),
+        0.1rem 0 0.4rem var(--color-brick-2);
+    }
+  }
+
+  &__logo {
+    font-size: 3.6rem;
+  }
+
   & ul {
     list-style: none;
     display: flex;

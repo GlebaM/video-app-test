@@ -32,6 +32,7 @@ const Navigation = () => {
         {!isLoggedIn && location.pathname !== "/auth" && (
           <li>
             <AnchorLink
+              className={classes.header__link}
               onClick={(e) => {
                 e.preventDefault();
                 clickHandler("/auth");
@@ -53,6 +54,7 @@ const Navigation = () => {
     <header className={classes.header}>
       <div className={classes.header__container}>
         <AnchorLink
+          className={classes.header__logo}
           onClick={(e) => {
             e.preventDefault();
             clickHandler("/");
